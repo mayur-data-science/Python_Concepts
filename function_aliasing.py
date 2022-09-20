@@ -40,3 +40,10 @@ add() # calling function add at 0x000001BD7778AF80 location.
 add1() # calling function add at 0x000001BD7778AF80 location.
 # FUNCTION ALIASING:
 #        For existing function we can give another name this is nothing but function aliasing
+
+del add # deleted add referance variable for function type object.
+# this function type object is not available for garbage collection automatically because there is another ...
+#...referance variable is assigned to it i.e add1
+# we can access add() functin by add1 referance variable.
+add() # NameError: name 'add' is not defined. Did you mean: 'add1'?
+add1() # happly called add() function.
