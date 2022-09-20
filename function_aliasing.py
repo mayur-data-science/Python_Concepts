@@ -16,6 +16,7 @@ print("--------------")
 
 # In python everything is treated as an object
 # Even functions also internally treated as object only
+# In python by default function name considered as referance variable name.
 # proof: 
 
 def add():
