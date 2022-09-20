@@ -12,6 +12,8 @@ second_variable = first_variable # making an alias
 print("Value of second:", second_variable) # Value of second: PYTHON
 print("Reference of second:", id(second_variable)) # Reference of second: 2610710821296 
 
+print("--------------")
+
 # In python everything is treated as an object
 # Even functions also internally treated as object only
 # proof: 
