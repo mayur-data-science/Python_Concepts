@@ -1,3 +1,4 @@
+# Aliasing :
 # In python programming, the second name given to a piece of data is known as an alias. 
 # Aliasing happens when the value of one variable is assigned to another variable because variables are just names that store references to actual value.
 # Example:
