@@ -38,7 +38,7 @@ def outer_function(): # outer_function declared
 
 to_call_inner_function = outer_function() # outer_function called and retuned...
                                           # ...inner_ function i.e "<function outer_function.<locals>.inner_function at 0x0000018C99D8AEF0>"
-                                          # Here function aliasing happned, capturing returned value in "to_call_inner_function" variable.
+                                          # Here internally function aliasing happned, capturing returned value in "to_call_inner_function" variable.
                                           # now, "to_call_inner_function" acts as referance variable pointing to "inner_function()"
 print(to_call_inner_function) # o/p: "<function outer_function.<locals>.inner_function at 0x000001DAE778AEF0>"
 to_call_inner_function() # Now, happily we can call inner_function() from...
