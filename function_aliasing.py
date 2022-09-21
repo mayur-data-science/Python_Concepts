@@ -12,7 +12,7 @@ def add():
 print(add) # <function add at 0x000001BD7778AF80>
 # "add" is an referance variable which is pointing to "function" type object "at" so and so memory location.
 print(id(add)) # 1913264844672
-# In this(0x000001BD7778AF80) memory location, id(1913264844672) of an function type object is present.
+# In this(0x000001BD7778AF80) memory location, object(id is 1913264844672) of an function type is present.
 
 # Can we create another referance variable for add() function?
 # YES, why not, we can create another referance variable..
