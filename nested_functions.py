@@ -1,3 +1,7 @@
+# closure in Python :
+          # A Closure is a function object that remembers values in enclosing scopes(outer functions scope) even if they are not present in memory. 
+          # 
+#-------------------------------------------------------------------------------------------------------------
 # Nested Functions:
           # Nested function means function inside function.
           # Nested functions are local to outer function, from outside we can't call directly.
@@ -93,3 +97,18 @@ print(
     ) # The format() method formats the specified value(s) and insert them inside the string's placeholder. 
       # The placeholder is defined using curly brackets: {}.
 #---------------------------------------------------------------------------------------------------------------------------------------------
+# Example 3:
+def mean(): # Function declared
+    sample = [] # Initially empty list assigned to sample referance variable.
+    def inner_mean(number): # Function declared
+        sample.append(number) # appending number  to sample list
+        return sum(sample) / len(sample) # sum(sample)--> calculating sum in sample list.
+                                         # len(sample)--> calculating length of sample list.
+                                         # we are dividing to calculating mean from sample list.
+                                         # finally returning the mean. 
+    return inner_mean # returning the inner_mean function.
+
+sample_mean = mean() # mean() returning the inner_mean function and we are assigning to sample_mean referance variable which is now pointing to inner_mean() function
+print(sample_mean(100)) # calling inner_mean() function of mean() function using referance variable sample_mean. and printing it.
+print(sample_mean(105))
+print(sample_mean(102))
