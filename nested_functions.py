@@ -1,4 +1,4 @@
-# Nested functions and closure in Python :
+# nested functions and closure in python :
 #-------------------------------------------------------------------------------------------------------------
 # Nested Functions:
             # Nested function means function inside function.
@@ -51,8 +51,8 @@ to_call_inner_function()    # Now, happily we can call inner_function() from...
 
 # Example 1 :
 
-# Parameter's : A parameter's is the variable listed inside the parentheses in the function definition
-# Argument's  : argument's is the value that are sent to the function when it is called
+# Parameter's : A parameter's are the variable listed inside the parentheses in the function definition
+# Argument's  : argument's are the value that are sent to the function when it is called
 # *args (Non-Keyword Arguments): to pass a variable(any) number of arguments to a function from function call.
 # **kwargs (Keyword Arguments) : to pass a variable(any) number of arguments to a function from function call.
         # Note : Name after * or ** can be anything but it is recomanded to use args and kwargs as industry standerd.
