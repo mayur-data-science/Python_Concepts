@@ -135,3 +135,4 @@ print(number) # o/p: 200
 #outer_mean()   # NameError: name 'outer_mean' is not defined 
                 # because we deleted outer_mean referance variable of that function object. 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#next topic
