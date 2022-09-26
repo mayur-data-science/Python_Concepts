@@ -34,3 +34,8 @@ del add # deleted the add referance variable for function type object.
 # we can access "add()" function by "add1" referance variable.
 # add() # NameError: name 'add' is not defined.
 add1() # happly called add() function.
+
+# Q) what is the difference between below two line 
+# 1) add1 = add   ---> add1 and add are pointing to same function object, its function aliasing
+# 2) add1 = add() ---> we are calling add() function and whatever add() function returns we are assigning it to add1 variable.
+#  print(add1) o/p: None   ---> in this example add() function returns "None" as default return value of function is "None".
