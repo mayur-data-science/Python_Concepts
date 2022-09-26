@@ -94,8 +94,11 @@ add1, sub1, mul1, div1, mod1 = outer_function(user_input1, user_input2) # return
 print(
     "Addition : {} \nSubtraction: {} \nMultiplication : {} \nDivision : {} \nRemainder : {} ".
     format(add1(), sub1(), mul1(), div1(), mod1())
-    )   # The format() method formats the specified value(s) and insert them inside the string's placeholder. 
+    )   # The format() method formats the specified value(s) and insert them inside the string's placeholder from left to right. 
         # The placeholder is defined using curly brackets: {}.
+print("*"*20)
+print("Remainder : {4} \nDivision: {3} \nMultiplication : {2} \nSubtraction : {1} \nAddition : {0} ".format(add1(), sub1(), mul1(), div1(), mod1()))
+# you can also use index in place holder, in this way we get the flexiblity to provide arguments to format() function.
 
 #---------------------------------------------------------------------------------------------------------------------------------------------
 # Example 3:
