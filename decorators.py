@@ -30,7 +30,7 @@ def person_decorator(input_func): # marriage_proposal_meeting = input_func # fun
     return decorating_person # returning decorating_person function with extended functionality as output.
 
 
-@person_decorator # [1]calling "automatically" person_decorator(marriage_proposal_meeting) function using @(at the rate) annotation.
+@person_decorator # [1]calling "automatically" person_decorator(marriage_proposal_meeting) function using @(at the rate) annotation without executing marriage_proposal_meeting()
 def marriage_proposal_meeting():    #[0] when control comes here and PVM checks if there is any decorator linked with this function decalaration
                                     # if YES, call [1] person_decorator i.e[@person_decorator] with argument "marriage_proposal_meeting".
                                     # person_decorator() function will return decorating_function() object in referance variable "decorating_person"  with extended functionality as output 
@@ -93,3 +93,8 @@ print("Memory location of marriage_proposal_meeting : ",id(marriage_proposal_mee
     # Memory location of marriage_proposal_meeting :  2022000990032
 
 # decorating_person and marriage_proposal_meeting pointing to same function type object. i.e 2022000990032
+
+#-----------------------------------------------------------------------------------------------------------
+
+# example 2:
+
