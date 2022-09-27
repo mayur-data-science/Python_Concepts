@@ -211,7 +211,7 @@ def higher_order_function(func1,func2): # func1 = add , internally function alia
                                         # func2 = sub , internally function aliasing happned.
     print("higher_order_function got {},{} function's as an argument's".format(func1,func2))
     
-    func1() # calling function add() having no arguments by it aliase name func1
+    func1() # calling function add() having no arguments by it's aliase name func1
             # *args means you can pass no arguments or any number of arguments while calling function 
     
     func2() # calling function sub() having arguments by it aliase name func2
