@@ -253,3 +253,25 @@ print("new global value of 'num2' : ",num2) # new global value of num2
 # global 'num2' modified 50
 # new global value of 'num1' :  110
 # new global value of 'num2' :  50
+#------------------------------------------------------------------------------------------
+
+# Example 7
+
+def shout(text): 
+    return text.upper() 
+
+def whisper(text): 
+    return text.lower() 
+
+def greet(func):  
+    # greeting = func("Hi, I am created by a function passed as an argument.") 
+    # return greeting
+    return func("Hi, I am created by a function passed as an argument.") 	# calling shout() or whisper() depend on argument's
+                                                                            # and returning result of perticular function.
+
+# greet_hof1 = greet(shout) 
+# greet_hof2 = greet(whisper)
+# print(greet_hof1)
+# print(greet_hof2)
+print(greet(shout)) # calling HOF greet having shout function as an argument.
+print(greet(whisper)) # calling HOF greet having whisper function as an argument.
