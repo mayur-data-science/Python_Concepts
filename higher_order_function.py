@@ -113,6 +113,143 @@ print("global num2 : ",num2) # global variable unaffected
 # local num2 :  5
 # global num1 :  10
 # global num2 :  5
+#---------------------------------------------------------------------------------------------------------------------------------
+
+# Ex--> 5 passing multiple functions(having no or any number of arguments) to Higher Order Function (accessing global variable inside functions)
+
+def higher_order_function(func1,func2): # func1 = add , internally function aliasing happned.
+                                        # func2 = sub , internally function aliasing happned.
+    print("higher_order_function got {},{} function's as an argument's".format(func1,func2))
+    
+    func1() # calling function add() having "no" arguments by it aliase name func1
+            # *args means you can pass "no" arguments or "any" number of arguments while calling function 
+    func2() # calling function sub() having "no" arguments by it aliase name func1
+            # *args means you can pass "no" arguments or "any" number of arguments while calling function  
+    
+num1 = int(input("Enter num1 : ")) # User input # global variable num1
+num2 = int(input("Enter num2 : ")) # User input # global variable num2
+num3 = int(input("Enter num3 : ")) # User input # global variable num3
+num4 = int(input("Enter num4 : ")) # User input # global variable num4
+
+def add(*args): # add declared # *args--> function parameter
+    print("inside add function")
+    print(num1 + num2) # num1 and num2 accessed from global space
+
+def sub(*args): # sub declared # *args--> function parameter
+    print("inside sub function")
+    print(num3 - num4) # num3 and num4 accessed from global scope
 
 
-# Ex--> 5
+higher_order_function(add,sub) # we are calling higher_order_function by passing add and sub function's as an argument's.
+
+print("global num1 : ",num1) # global variable unaffected
+print("global num2 : ",num2) # global variable unaffected
+print("global num3 : ",num1) # global variable unaffected
+print("global num4 : ",num2) # global variable unaffected
+
+# o/p :
+        # Enter num1 : 50
+        # Enter num2 : 40
+        # Enter num3 : 30
+        # Enter num4 : 20
+        # higher_order_function got <function add at 0x0000012CA1A995A0>,<function sub at 0x0000012CA1A997E0> function's as an argument's
+        # inside add function
+        # 90
+        # inside sub function
+        # 10
+        # global num1 :  50
+        # global num2 :  40
+        # global num3 :  50
+        # global num4 :  40
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Ex--> 6 passing multiple functions(having no or any number of arguments) to Higher Order Function (modifying global variable inside functions)
+
+def higher_order_function(func1,func2): # func1 = add , internally function aliasing happned.
+                                        # func2 = sub , internally function aliasing happned.
+    print("higher_order_function got {},{} function's as an argument's".format(func1,func2))
+    
+    func1() # calling function add() having "no" arguments by it aliase name func1
+            # *args means you can pass "no" arguments or "any" number of arguments while calling function 
+    func2() # calling function sub() having "no" arguments by it aliase name func1
+            # *args means you can pass "no" arguments or "any" number of arguments while calling function  
+    
+num1 = int(input("Enter num1 : ")) # User input # global variable num1
+num2 = int(input("Enter num2 : ")) # User input # global variable num2
+num3 = int(input("Enter num3 : ")) # User input # global variable num3
+num4 = int(input("Enter num4 : ")) # User input # global variable num4
+
+def add(*args): # add declared # *args--> function parameter
+    print("inside add function")
+    num1 = num1 + num2      # UnboundLocalError: local variable 'num1' referenced before assignment
+                            # you can access global variable inside function but you can't modify it inside functions
+    print(num1 + num2) # num1 and num2 accessed from global space
+
+def sub(*args): # sub declared # *args--> function parameter
+    print("inside sub function")
+    num3 = num3 - num4      # UnboundLocalError: local variable 'num3' referenced before assignment
+                            # you can access global variable inside functions but you can't modify it inside functions
+    print(num3 - num4) # num3 and num4 accessed from global space
+
+
+higher_order_function(add,sub) # we are calling higher_order_function by passing add and sub function's as an argument's.
+
+print("global num1 : ",num1) # global variable unaffected
+print("global num2 : ",num2) # global variable unaffected
+print("global num3 : ",num1) # global variable unaffected
+print("global num4 : ",num2) # global variable unaffected
+
+# o/p : UnboundLocalError: local variable 'num1' referenced before assignment
+
+#---------------------------------------------------------------------------------------------------------------------------------
+
+# Ex--> 6 passing multiple functions(having no or any number of arguments) to Higher Order Function (modifying global variable inside functions)
+
+
+def higher_order_function(func1,func2): # func1 = add , internally function aliasing happned.
+                                        # func2 = sub , internally function aliasing happned.
+    print("higher_order_function got {},{} function's as an argument's".format(func1,func2))
+    
+    func1() # calling function add() having no arguments by it aliase name func1
+            # *args means you can pass no arguments or any number of arguments while calling function 
+    
+    func2() # calling function sub() having arguments by it aliase name func2
+            # *args means you can pass no arguments or any number of arguments while calling function
+    
+
+num1 = int(input("Enter num1 : ")) # User input # global variable num1
+print("user input global num1 value : ",num1)
+num2 = int(input("Enter num2 : ")) # User input # global variable num2
+print("user input global num2 value : ",num2)
+
+def add(*args): # add declared
+    global num1 # to modify global variable in function, we must specify it in function using "global" keyword. 
+    print("inside add function")
+    num1 = num1 + num2 # num1(can modify) and num2(can't modify) accessed from global scope
+    print("global 'num1' modified : ",num1) # new global value of num1
+
+
+def sub(*args): # sub declared
+    global num2 # to modify global variable in function, we must specify it in function using "global" keyword.
+    print("inside sub function")
+    num2 = num1 - num2 # num1(new value in num1(can't modify) and num2(can modify) accessed from global scope
+    print("global 'num2' modified",num2) # new global value of num2
+
+
+higher_order_function(add,sub) # we are calling higher_order_function by passing add and sub function's as an argument's.
+print("new global value of 'num1' : ",num1) # new global value of num1
+print("new global value of 'num2' : ",num2) # new global value of num2
+
+# o/p :
+# Enter num1 : 50
+# user input global num1 value :  50
+# Enter num2 : 60
+# user input global num2 value :  60
+# higher_order_function got <function add at 0x0000021198E68CA0>,<function sub at 0x0000021198E69750> function's as an argument's
+# inside add function
+# global 'num1' modified :  110
+# inside sub function
+# global 'num2' modified 50
+# new global value of 'num1' :  110
+# new global value of 'num2' :  50
