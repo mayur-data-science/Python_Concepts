@@ -98,3 +98,25 @@ print("Memory location of marriage_proposal_meeting : ",id(marriage_proposal_mee
 
 # example 2:
 
+def add_decorator(func_input): # add = func_input # Aliasing happned
+    def add_enhancement(x,y): # extending functionality # no. of argument must be same as add(a,b)
+        print("*"*35)
+        print("a is {2} and b is {1}, addition is {0}".format(x+y,y,x))
+        print("*"*35)
+        func_input(x,y) # calling original add(a,b) function.
+    return add_enhancement # returning add_enhancement function type object
+
+@add_decorator
+def add(a,b):
+    print(a+b)
+    
+add(10,20) # calling add_enhancement(x,y) with two argument 10 and 20
+
+# o/p :
+        # ***********************************
+        # a is 10 and b is 20, addition is 30
+        # ***********************************
+        # 30
+
+# note : if we remove @add_decorator then add(10,20) is a call to to original add(a,b) function.
+#        in that case o/p will be 30 only
