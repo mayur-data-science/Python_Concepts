@@ -275,3 +275,7 @@ def greet(func):
 # print(greet_hof2)
 print(greet(shout)) # calling HOF greet having shout function as an argument.
 print(greet(whisper)) # calling HOF greet having whisper function as an argument.
+
+# o/p :
+        # HI, I AM CREATED BY A FUNCTION PASSED AS AN ARGUMENT.
+        # hi, i am created by a function passed as an argument.
