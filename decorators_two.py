@@ -113,7 +113,6 @@ remainder(10,0)#4 # None
 #------------------------------------------------------------------------------------------------------
 
 # Ex-->3
-# def check_zero(func):
 
 def check_zero(func): # func = div # aliasing happned
 
