@@ -1,5 +1,5 @@
 # More decorator examples:
-# When you specify @decorator_function above any original function , the same original function will be passed as argument.
+# When you specify @variable_counter above any original function , the same original function will be passed as argument.
 # It means decorator function accept only one function as input.
 
 
@@ -108,3 +108,78 @@ remainder(10,0)#4 # None
 #        Inside Wraper function
 #        argument b is 0
 #------------------------------------------------------------------------------------------------------
+
+# Ex-->3
+# def check_zero(func):
+
+def check_zero(func): # func = div # aliasing happned
+
+    def wrap(num1, num2):
+        
+        if num2 == 0: # if block
+            return "Undefined"
+                # calling div(a,b)
+        return func(num1, num2) # returning data
+    
+    return wrap
+
+@check_zero
+def div(a, b):
+    return a/b # returning data
+
+print(div(div(4, 2), div(0, 10)))   # calling wrap(4, 2) ==> 2.0
+                                    # calling wrap(0, 10) ==> 0.0
+            # 2.0  ,    # 0.0
+
+# o/p : Undefined
+
+
+# without decorator:
+
+def check_zero(func):
+
+    def wrap(num1, num2):
+        
+        if num2 == 0:
+            return "Undefined"
+        
+        return func(num1, num2)
+    return wrap
+
+
+def div(a, b):
+    return a/b
+
+div = check_zero(div)
+print(div(div(4, 2), div(0, 10)))
+
+#----------------------------------------------------------------------------
+
+# Ex--> 4
+# in program we can specify decorator to any function for extended functionality insted of running original function
+# (we may or may not call original function inside decorators wraper function)
+def decorator(input_function):  # input_function = square or
+                                # input_function = square_root
+
+    def wraper(*args, **kwargs):
+
+        list = [pow(x, 2) for x in args] # Square of input Arguments
+        return input_function(list, **kwargs)   # calling original function's 
+                                                # square(list) or square_root(list) depends which one is input function to decorator.
+
+    return wraper
+
+@decorator # calling decorator # returning wraper # assigning wraper to square # now we can call wraper by using its aliase name square.
+def square(list):
+    return list
+
+@decorator # calling decorator # returning wraper # assigning wraper to square_root # now, we can call wraper by using its aliase name square_root.
+def square_root(list):
+    return [pow(x, 0.5) for x in list] # doing square root of input list data and returning
+
+def function3():
+    print(square(1, 2, 3, 4), square_root(1, 2), square(1, 2), square_root(1, 2, 3, 4))
+
+function3()
+
+# o/p : [1, 4, 9, 16] [1.0, 2.0] [1, 4] [1.0, 2.0, 3.0, 4.0]
