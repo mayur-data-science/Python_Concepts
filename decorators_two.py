@@ -30,8 +30,11 @@ if __name__ == '__main__': # True #5
 
 # o/p: 3
 
-# without decorator:
+# without decorator: as higher-order functions
 # you can pass any number of functions as an argument to to variable_counter as its normal python function.
+# what is the difference between higher Order Functions and decorator function.?
+    # the main difference is Higher-Order-Function may take many input function and returns many output functions.
+    # decorator function only take one input function and returns only one function as output.
 
 def variable_counter(input_function): # input_function = normal_function. # Aliasing happned.
     # counter_remember.counter = 0 # UnboundLocalError: local variable 'counter_remember' referenced before assignment
@@ -169,13 +172,13 @@ def decorator(input_function):  # input_function = square or
 
     return wraper
 
-@decorator # calling decorator # returning wraper # assigning wraper to square # now we can call wraper by using its aliase name square.
+@decorator # calling decorator with input function as square # returning wraper # assigning wraper to square # now we can call wraper by using its aliase name square.
 def square(list):
-    return list
+    return list # returning list as it is.
 
-@decorator # calling decorator # returning wraper # assigning wraper to square_root # now, we can call wraper by using its aliase name square_root.
+@decorator # calling decorator with input function as square_root # returning wraper # assigning wraper to square_root # now, we can call wraper by using its aliase name square_root.
 def square_root(list):
-    return [pow(x, 0.5) for x in list] # doing square root of input list data and returning
+    return [pow(x, 0.5) for x in list] # doing square root of input list data and returning.
 
 def function3():
     print(square(1, 2, 3, 4), square_root(1, 2), square(1, 2), square_root(1, 2, 3, 4))
