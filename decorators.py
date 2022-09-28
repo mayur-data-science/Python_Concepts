@@ -3,7 +3,7 @@
 #         and returns modified function with extended functionality.
 # Decorator:
 #---------->It is a function.
-#---------->It always takes a function as an argument(input function)
+#---------->It always takes a function as an argument(input function)(only one)
 #---------->It will create a new function with extended functionality.
 #           In this new function we may use original function(input function)
 #---------->It will return that extended function as output
