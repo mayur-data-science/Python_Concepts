@@ -118,5 +118,5 @@ add(10,20) # calling add_enhancement(x,y) with two argument 10 and 20
         # ***********************************
         # 30
 
-# note : if we remove @add_decorator then add(10,20) is a call to to original add(a,b) function.
-#        in that case o/p will be 30 only
+# note: if we remove @add_decorator then add(10,20) is a call to to original add(a,b) function.
+        # in that case o/p will be 30 only
