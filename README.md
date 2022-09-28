@@ -5,4 +5,5 @@
  # 3) [Nested Functions](https://github.com/mayur-data-science/Python_Concepts/blob/main/nested_functions.py)
  # 4) [Higher Order Functions](https://github.com/mayur-data-science/Python_Concepts/blob/main/higher_order_function.py)
  # 5) [Decorator's](https://github.com/mayur-data-science/Python_Concepts/blob/main/decorators.py)
+ # 6) [Decorator's_Two✌](https://github.com/mayur-data-science/Python_Concepts/blob/main/decorators_two.py)
  
