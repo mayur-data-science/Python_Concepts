@@ -185,3 +185,35 @@ def function3():
 function3()
 
 # o/p : [1, 4, 9, 16] [1.0, 2.0] [1, 4] [1.0, 2.0, 3.0, 4.0]
+
+#-------------------------------------------------------------------
+def decorator_function(input_function):
+    def wrapper(name):
+        names = ['CM','PM','MAYUR',"SHANTANU","ABHIMANYU","RUSHI"]
+        if name in names:
+            print("*"*20)
+            print("very good morning {} sir".format(name))
+            print("{} sir you are very important to us".format(name))
+            print("*"*20)
+        else:
+            input_function(name)
+    
+    return wrapper
+@decorator_function
+def wish(name):
+    print("Welcome {}".format(name))
+
+wish("GAURAV")
+wish("CM")
+wish("RUSHI")
+
+# o/p : 
+    # Welcome GAURAV
+    # ********************
+    # very good morning CM sir
+    # CM sir you are very important to us
+    # ********************
+    # ********************
+    # very good morning RUSHI sir
+    # RUSHI sir you are very important to us
+    # ********************
