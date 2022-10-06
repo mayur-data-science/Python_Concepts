@@ -39,7 +39,7 @@ if __name__ == '__main__': # True #5
 def variable_counter(input_function): # input_function = normal_function. # Aliasing happned.
     # counter_remember.counter = 0 # UnboundLocalError: local variable 'counter_remember' referenced before assignment
     def counter_remember(*args,**kargs):
-         # counter_remember.counter = 0 # reinitalizng counter to 0 every time we call counter_remember() function so no meaning to write this line
+        # counter_remember.counter = 0 # reinitalizng counter to 0 every time we call counter_remember() function so no meaning to write this line
         counter_remember.counter = counter_remember.counter + 1
         return input_function(*args,**kargs)
     
@@ -82,9 +82,9 @@ def remainder(a,b):
 
 remainder(10,0) #4 # None
 
-# o/p :  
-#        Inside Wraper function
-#        argument b is 0
+    # o/p :  
+    #        Inside Wraper function
+    #        argument b is 0
 
 # without decorator:
 # you can pass any number of functions as an argument to to decorator_function as its normal python function.
