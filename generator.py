@@ -239,3 +239,94 @@ print('Took {}'.format(t3 - t4)) # Took -0.010064363479614258
 #----------------------------------------------------------#
 # Generators vs Normal Collections wrt Memory Utilization: #
 #----------------------------------------------------------#
+
+
+# Normal Collection:
+# l=[x*x for x in range(10000000000000000)] 
+# print(l[0])
+
+    # We will get MemoryError in this case because all these values are required to store in the memory
+
+# Generators:
+g=(x*x for x in range(10000000000000000))
+print(next(g))  # o/p : 0
+print(next(g))  # o/p : 1
+print(next(g))  # o/p : 4
+print(next(g))  # o/p : 9
+
+    # We won't get any MemoryError because the values won't be stored at the beginning
+
+
+#--------------------------------------------------------------------------------------------------------#
+
+# Ex : 1
+def countdown(num):
+    print("Start Countdown")
+    while(num>0):
+        yield num
+        num = num-1
+
+values = countdown(5)
+
+for x in values:
+    print(x)
+
+    # o/p :
+        # Start Countdown
+        # 5
+        # 4
+        # 3
+        # 2
+        # 1
+
+
+# Ex : 2 (To generate first n numbers)
+
+def first_n(num):
+    n = 1
+    while n<=num :
+        yield n
+        n = n+1
+
+values1 = first_n(5)
+
+for x in values1:
+    print(x)
+
+    # o/p : 
+        # 1
+        # 2
+        # 3
+        # 4
+        # 5
+
+# Ex : 3
+    # To generate Fibonacci Numbers... (til l00)
+    # The next is the sum of previous 2 numbers
+
+def fibonacchi():
+    previous_num, next_num = 1,2 #2
+
+    while True: #3 #9 #15 #21 #27 #33 #39 #45 #51 #57 #63
+        yield previous_num #4 #10 #16 #22 #28 #34 #40 #46 #52 #58 #64
+        previous_num, next_num = next_num, previous_num + next_num #8 #14 #20 #26 #32 #38 #44 #50 #56 #62
+
+for f in fibonacchi(): #1 #5 #11 #17 #23 #29 #35 #41 #47 #53 #59 #65
+    if f>100: #6 #12 #18 #24 #30 #36 #42 #48 #54 #60 #66(144>100)(True)
+        break #67
+        print(f) #7 #13 #19 #25 #31 #37 #43 #49 #55 #61
+
+        # Execution of program (#1 to #67)
+
+    # o/p : 
+        # 1
+        # 2
+        # 3
+        # 5
+        # 8
+        # 13
+        # 21
+        # 34
+        # 55
+        # 89
+
