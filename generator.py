@@ -5,16 +5,18 @@
         # Generator is a function which is responsible to generate a sequence of values.
         # We can write generator functions just like ordinary functions, 
         # but it uses yield keyword to return values.
-        
+
         # Generators are pretty useful when working with sequences that allocate a large amount of memory.
-        # Generators support an iteration protocol so when we call them, they do not return a value and exit like normal functions,
-        # but they do yield a value and do not exit
-        
-        # After the next value in the sequence is generated,
-        # they automatically suspend and resume their execution state at the last point when the next value is asked for.
-        
+        # Generators support an iteration protocol so when we call them, they do yield(produce) and (return) a data from a function and do not exit function.
+        # its very opposite to normal functions where normal function return a data and exit.
+
+        # when program cursor(the position indicator) comes to yield,
+        # PVM automatically freez(Hold on to) the state of the function and provide data.
+        # after providing(returning) the data, if data is asked again from same generator object, then,
+        # that same generator object will resume its execution state and execute next line of code if any.
+
         # The advantage is that instead of having to compute the entire sequence at once, 
-        # generators compute one value at a time and wait until the next value is called for.
+        # generators compute one value at a time and wait until the next value is called or asked for.
 
 # Ex : 1
 
@@ -288,9 +290,11 @@ def first_n(num):
         yield n
         n = n+1
 
-values1 = first_n(5)
+values1 = first_n(5) # here PVM will not calling generater function
 
-for x in values1:
+for x in values1:   # when PVM sees we asked data from generator function object, PVM will invoke generator first_n(num) function
+                    # for x in values1 means we are asking current state data which is present in generator object to store in x.
+                    # suppose we never asked for data present in generator object then than that function will never be invoked.
     print(x)
 
     # o/p : 
@@ -301,7 +305,7 @@ for x in values1:
         # 5
 
 # Ex : 3
-    # To generate Fibonacci Numbers... (til l00)
+    # To generate Fibonacci Numbers... (till 100)
     # The next is the sum of previous 2 numbers
 
 def fibonacchi():
@@ -317,6 +321,11 @@ for f in fibonacchi(): #1 #5 #11 #17 #23 #29 #35 #41 #47 #53 #59 #65
         print(f) #7 #13 #19 #25 #31 #37 #43 #49 #55 #61
 
         # Execution of program (#1 to #67)
+        
+        # when program cursor(the position indicator) comes to (#4 #10 #16 #22 #28 #34 #40 #46 #52 #58 #64),
+        # PVM automatically freez the state(#4 #10 #16 #22 #28 #34 #40 #46 #52 #58 #64) of the function and provide data.
+        # after providing(returning) the data, if data is asked (#1 #5 #11 #17 #23 #29 #35 #41 #47 #53 #59 #65) again from same generator object then,
+        # that same generator object will resume its execution state and execute next line of code (#8 #14 #20 #26 #32 #38 #44 #50 #56 #62).
 
     # o/p : 
         # 1
