@@ -418,6 +418,53 @@ for f in fibonacchi(): #1 #5 #11 #17 #23 #29 #35 #41 #47 #53 #59 #65
         # 34
         # 55
         # 89
+
+#-------------------------------------------------------------------------------------------#
+
+import os
+import psutil
+
+number = 10000000
+
+
+def memory_usage_in_MB(process):
+  return  process.memory_info()[0] / float(2 ** 20)
+
+process = psutil.Process(os.getpid())
+
+memory1 = memory_usage_in_MB(process)
+print("Memory before generator : ",memory1)
+
+toto = (x*x for x in range(number))
+tata = (x+x for x in toto)
+tutu = (x-1 for x in tata)
+
+memory2 = memory_usage_in_MB(process)
+
+print("Memory after generator : ",memory2)
+print("memory utilized by generator data: " + str(memory2 - memory1) + "MB")
+
+memory1 = memory_usage_in_MB(process)
+print("Memory before iterator : ",memory1)
+
+toto = [x*x for x in range(number)]
+toto = [x+x for x in toto]
+toto = [x-1 for x in toto]
+
+memory2 = memory_usage_in_MB(process)
+
+print("Memory after iterator : ",memory2)
+print("memory utilized by iterator data: " + str(memory2 - memory1) + "MB")
+
+        # o/p :
+            # Memory before generator :  16.9375
+            # Memory after generator :  16.9375
+            # memory utilized by generator data: 0.0MB
+            # Memory before iterator :  16.94140625
+            # Memory after iterator :  404.50390625
+            # memory utilized by iterator data: 387.5625MB
+
+
 #--------------------------------------------------------------------------#
 # What is the difference between a normal function and a generator function?
 #--------------------------------------------------------------------------#
