@@ -1,3 +1,57 @@
+#----------------#
+# next() function:
+#----------------#    
+        
+        # The next() function in python programming is used to get the next item from a collection of values.
+        # The next() takes two values as arguments namely - iterator and default-value. 
+        # The next() function returns the next element of the iterable object as output.
+        
+        # the next() function takes two arguments:
+            # iterator: Iterator is an object that is used to iterate over an iterable specified object or collection of values.
+            # default:  default value is returned from the next() function if the iterator is completed or exhausted.
+                        # The default value also makes sure that the function should not raise any error.
+        
+        # Note: The first argument is required, but the second argument is optional.
+        # The default value is optional
+        
+        # The exception raised by the next() function is called StopIteration exception.(see in Ex : 2.0)
+        # When the end of an iterator is reached, and we try to access the next item, the python interpreter searches for the default value. 
+        # If a default value is not given, then the program will raise an StopIteration error.
+        
+        # StopIteration is a built-in exception raised by the built-in function next() and an iterator's __next__() method,
+        # which reminds that the iterator is exhausted or the iterator produces no further items.
+
+# Ex : 0
+
+random_list = ['A', 'B', 'C'] # initializing a list.
+
+default_value = 'end' # setting a default value.
+
+
+iterator_list = iter(random_list) # converting the list to an iterator.
+
+next_element_1 = next(iterator_list, default_value)
+print(next_element_1)
+
+next_element_2 = next(iterator_list, default_value)
+print(next_element_2)
+
+next_element_3 = next(iterator_list, default_value)
+print(next_element_3)
+
+next_element_4 = next(iterator_list, default_value) # This will raise StopIteration Exception as the iterator is exhausted.
+                                                    # but we used default value i.e 'end'
+print(next_element_4)
+
+    # o/p : 
+        # A
+        # B
+        # C
+        # end
+            # The first three elements of the list are printed by the next() function, 
+            # and when we tried to get the 4th or next element, it returned the default value.
+
+
 #----------------------#
 # Generators in python :
 #----------------------#
@@ -62,7 +116,7 @@ g = mygen()
 print(next(g))  # A
 print(next(g))  # B
 print(next(g))  # C
-print(next(g))  # StopIteration
+print(next(g))  # StopIteration (we can also use default value to avoid Error )
     # If we call the next function on the generator after we reach the end, it will return a StopIteration error.
     
     # The for loop does the same steps as we do with the next() function.
