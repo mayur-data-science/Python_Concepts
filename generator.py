@@ -168,29 +168,53 @@ for i in mygenerator(10):
 print(next(mygenerator(10))) # 1
 print(next(mygenerator(10))) # 1
 
-# Ex : 3
-    # Another way to create a generator is by using a generator expression. It is similar to a list comprehension.
 
-mygenerator = (i**3 for i in range(1,10,2)) # generator expression
 
-print(next(mygenerator)) # 1
 
-for i in mygenerator:
+# Ex : 3 (Python Generator Expression)
+
+    # Another way to create a generator is by using a generator expression.
+    # Similar to a lambda function, which creates anonymous functions, generator expressions create anonymous generator functions.
+    # The syntax for generator expression is similar to that of a list comprehension in Python, except you use round parenthesis () instead of squared brackets [].
+    
+    # While the list comprehension produces the entire list all at once, 
+    # the generator returns every number one at a time. This is called lazy execution.
+    # This makes generator highly memory efficient than a list comprehension.
+
+# Ex : 3.1
+
+my_list = [i**3 for i in range(1,10,2)] # list comprehension produces the entire list all at once
+print(my_list) # o/p : [1, 27, 125, 343, 729]
+print(type(my_list)) # o/p : <class 'list'>
+
+
+# Ex : 3.2
+
+my_generator = (i**3 for i in range(1,10,2)) # generator expression, the generator returns every number one at a time if asked. 
+
+print(type(my_generator)) # <class 'generator'>
+
+print(next(my_generator)) # 1
+
+for i in my_generator:
     print(i)            # 27
                         # 125
                         # 343
                         # 729
 
-# for i in mygenerator: 	# It is important to note that once we iterate over a generator and reach the end, we can not iterate over it again.
-    #print(i)           	# For example, if we try to use mygenerator again in our program nothing will be returned
+# for i in my_generator: 	# It is important to note that once we iterate over a generator and reach the end, we can not iterate over it again.
+    #print(i)           	# For example, if we try to use my_generator again in our program nothing will be returned
                             # mygenerator is exhausted(completely used up) # no values to iterate over
 
 
-print(next(mygenerator))	# StopIteration (Error)
+print(next(my_generator))	# StopIteration (Error)
 
             # This is not the case in example 2.3 because we had a generator function which creates a generator each time it is executed. 
             # You may notice that we do not have a function call in this example. 
             # Instead, we have a generator object.
+
+
+
 
 
 
@@ -223,11 +247,11 @@ print(next(my_string_new)) # t
         # The iter function can also be used to convert a list to an iterator.
 
 my_list = ['a', 'b', 'c', 'd', 'e']
-my_gen = iter(my_list)
-print(type(my_gen)) # <class 'list_iterator'>
+my_iter = iter(my_list)
+print(type(my_iter)) # <class 'list_iterator'>
 
     # Let’s use it in a for loop.
-for i in my_gen:
+for i in my_iter:
     print(i)    # o/p : # a
                         # b
                         # c
@@ -377,7 +401,7 @@ for f in fibonacchi(): #1 #5 #11 #17 #23 #29 #35 #41 #47 #53 #59 #65
         # Execution of program (#1 to #67)
         
         # when program cursor(the position indicator) comes to (#4 #10 #16 #22 #28 #34 #40 #46 #52 #58 #64),
-        # PVM automatically freez the state(#4 #10 #16 #22 #28 #34 #40 #46 #52 #58 #64) of the function and provide data.
+        # PVM automatically pause the state(#4 #10 #16 #22 #28 #34 #40 #46 #52 #58 #64) of the function and provide data.
         # after providing(returning) the data, if data is asked (#1 #5 #11 #17 #23 #29 #35 #41 #47 #53 #59 #65) again from same generator object then,
         # that same generator object will resume its execution state and execute next line of code (#8 #14 #20 #26 #32 #38 #44 #50 #56 #62).
 
@@ -392,4 +416,9 @@ for f in fibonacchi(): #1 #5 #11 #17 #23 #29 #35 #41 #47 #53 #59 #65
         # 34
         # 55
         # 89
+#--------------------------------------------------------------------------#
+# What is the difference between a normal function and a generator function?
+#--------------------------------------------------------------------------#
 
+    # The difference between a normal function and a generator function is that while a return statement terminates a function, 
+    # yield statement will pause the function, save its current state and later continue from there in the next call.
